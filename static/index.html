@@ -79,6 +79,40 @@
         @media (max-width: 900px) {
             .container {
                 grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            .glass-card {
+                padding: 2rem;
+            }
+
+            .main-title {
+                font-size: 2.5rem !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                grid-template-columns: 1fr;
+                margin: 0.5rem;
+                padding: 0.5rem;
+            }
+
+            .glass-card {
+                padding: 1.5rem;
+            }
+
+            .main-title {
+                font-size: 2rem !important;
+            }
+
+            .main-subtitle {
+                font-size: 1rem !important;
+            }
+
+            #demo-form {
+                grid-template-columns: 1fr !important;
             }
         }
 
@@ -108,6 +142,7 @@
             font-weight: 700;
             background: linear-gradient(to right, #4ade80, #38bdf8);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -275,9 +310,14 @@
     <div class="container">
         <!-- Application Branding -->
         <div style="grid-column: 1 / -1; text-align: center; margin-bottom: 1rem; margin-top: -1rem;">
-            <h1 style="font-size: 3.5rem; font-weight: 800; margin: 0; background: linear-gradient(to right, #4ade80, #38bdf8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">FarmCall</h1>
-            <p style="color: #cbd5e1; font-size: 1.15rem; max-width: 700px; margin: 1rem auto 0; line-height: 1.6;">
-                The Voice-First Agricultural Intelligence Engine. FarmCall continuously monitors hyperlocal weather patterns and automatically calls rural farmers with critical, AI-generated advisories in their native languages.
+            <h1 class="main-title"
+                style="font-size: 3.5rem; font-weight: 800; margin: 0; background: linear-gradient(to right, #4ade80, #38bdf8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                FarmCall</h1>
+            <p class="main-subtitle"
+                style="color: #cbd5e1; font-size: 1.15rem; max-width: 700px; margin: 1rem auto 0; line-height: 1.6; padding: 0 1rem;">
+                The Voice-First Agricultural Intelligence Engine. FarmCall continuously monitors hyperlocal weather
+                patterns and automatically calls rural farmers with critical, AI-generated advisories in their native
+                languages.
             </p>
         </div>
 
@@ -285,7 +325,8 @@
         <div class="glass-card"
             style="grid-column: 1 / -1; border-color: rgba(244, 114, 182, 0.4); box-shadow: 0 10px 30px -10px rgba(244, 114, 182, 0.2);">
             <div class="header">
-                <h1 style="background: linear-gradient(to right, #f472b6, #fb7185); -webkit-background-clip: text;">
+                <h1
+                    style="background: linear-gradient(to right, #f472b6, #fb7185); -webkit-background-clip: text; background-clip: text;">
                     Demo Mode Call</h1>
                 <p>Instantly test the AI Voice Call without saving to the database.</p>
             </div>
@@ -420,7 +461,8 @@
         <!-- Card 2: Village Broadcast -->
         <div class="glass-card">
             <div class="header">
-                <h1 style="background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text;">
+                <h1
+                    style="background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text;">
                     Village Broadcast</h1>
                 <p>Call all farmers connected to a specific village.</p>
             </div>
@@ -442,14 +484,15 @@
         <!-- Card 3: Global Daily Alert -->
         <div class="glass-card">
             <div class="header">
-                <h1 style="background: linear-gradient(to right, #c084fc, #f472b6); -webkit-background-clip: text;">
+                <h1
+                    style="background: linear-gradient(to right, #c084fc, #f472b6); -webkit-background-clip: text; background-clip: text;">
                     Global Alert Engine</h1>
                 <p>Trigger the automatic pipeline for every member in the database.</p>
             </div>
 
             <div style="flex-grow: 1; display:flex; flex-direction:column; justify-content:center; text-align: center;">
                 <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">
-                    This triggers `/run-daily-alerts`. The system will automatically iterate through all registered
+                    The system will automatically iterate through all registered
                     villages, check their respective weather risk, generate localized AI intelligence, and concurrently
                     dial every farmer in the system if the risk is HIGH.
                 </p>
