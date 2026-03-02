@@ -29,7 +29,7 @@ services:
       - key: NGROK_URL
         sync: false
 
-  - type: psql
+  - type: postgres
     name: farmcall-db
     plan: free
     region: ohio
