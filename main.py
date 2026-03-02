@@ -33,6 +33,16 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Farmcall API", lifespan=lifespan)
 
+from fastapi import Request
+from fastapi.responses import JSONResponse
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    print(f"Global Exception: {exc}")
+    import traceback
+    traceback.print_exc()
+    return JSONResponse(status_code=500, content={"status": "error", "message": f"Server Crash: {str(exc)}"})
+
 os.makedirs("audio_files", exist_ok=True)
 app.mount("/audio_files", StaticFiles(directory="audio_files"), name="audio_files")
 
