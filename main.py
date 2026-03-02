@@ -33,6 +33,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Farmcall API", lifespan=lifespan)
 
+os.makedirs("audio_files", exist_ok=True)
 app.mount("/audio_files", StaticFiles(directory="audio_files"), name="audio_files")
 
 # Ensure static dir exists for index.html
