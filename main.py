@@ -14,7 +14,7 @@ from voice_service import generate_voice_file
 from call_service import make_twilio_call
 from config import NGROK_URL
 from models import Village, Farmer, Advisory, WeatherData, AdvisoryCall
-from database import SessionLocal
+from database import SessionLocal, engine, Base
 import os
 import asyncio
 from datetime import date, timedelta
@@ -27,6 +27,7 @@ import requests
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup event: Launch the scheduled daily checks
+    Base.metadata.create_all(bind=engine)
     start_scheduler()
     yield
     # Shutdown event: can add cleanup here
