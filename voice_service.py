@@ -14,6 +14,7 @@ voice_map = {
     "Bengali": "bn-IN-anwesha", # Anwesha (Young Adult, Conversational)
     "Telugu": "en-IN-priya",    # Priya (Sweet/Conversational Fallback for Telugu)
     "Kannada": "kn-IN-shruti",
+    "Malayalam": "en-IN-alia",  # Alia (Sweet/Conversational Fallback for Malayalam)
 }
 
 # Languages where Murf doesn't have a voice — fallback to English voice

@@ -1,6 +1,5 @@
 # python -m uvicorn main:app --port 8000 --reload
 # ./ngrok.exe http --url=lachrymal-leatha-tuskless.ngrok-free.dev 8000
-# http://127.0.0.1:8000/run-daily-alerts
 
 
 # psql -U postgres -d farmcall_db
@@ -144,6 +143,8 @@ class FarmerCreate(BaseModel):
 
 @app.post("/add-farmer")
 def add_farmer(farmer: FarmerCreate):
+    farmer.name = farmer.name.strip().lower()
+    farmer.phone = farmer.phone.strip()
     db = SessionLocal()
     
     # Check if village exists
@@ -175,6 +176,7 @@ class VillageCallRequest(BaseModel):
 
 @app.post("/api/call-village")
 def call_village_endpoint(req: VillageCallRequest, background_tasks: BackgroundTasks):
+    req.village_name = req.village_name.strip().lower()
     db = SessionLocal()
     village = db.query(Village).filter(Village.village_name.ilike(req.village_name)).first()
     if not village:
@@ -289,6 +291,14 @@ class RegisterCallRequest(BaseModel):
 
 @app.post("/api/register-and-call")
 def register_and_call(req: RegisterCallRequest, background_tasks: BackgroundTasks):
+    req.name = req.name.strip().lower()
+    req.phone = req.phone.strip()
+    req.village_name = req.village_name.strip().lower()
+    req.mandal = req.mandal.strip().lower()
+    req.district = req.district.strip().lower()
+    req.state = req.state.strip().lower()
+    req.crop = req.crop.strip().lower()
+    
     db = SessionLocal()
 
     # 1. Check if phone exists
@@ -435,6 +445,13 @@ def register_and_call(req: RegisterCallRequest, background_tasks: BackgroundTask
 
 @app.post("/api/demo-call")
 def demo_call(req: RegisterCallRequest, background_tasks: BackgroundTasks):
+    req.name = req.name.strip().lower()
+    req.phone = req.phone.strip()
+    req.village_name = req.village_name.strip().lower()
+    req.mandal = req.mandal.strip().lower()
+    req.district = req.district.strip().lower()
+    req.state = req.state.strip().lower()
+    req.crop = req.crop.strip().lower()
     
     # Geocode the location
     lat, lon = None, None
