@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmcall Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-color: #ffffff;
+            --accent: #4ade80;
+            --accent-hover: #22c55e;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bg-circle {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .circle-1 {
+            top: -10%;
+            left: -10%;
+            width: 40vw;
+            height: 40vw;
+            background: rgba(56, 189, 248, 0.3);
+        }
+
+        .circle-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: rgba(74, 222, 128, 0.2);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            margin: 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #4ade80, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .form-control::placeholder {
+            color: #64748b;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cbd5e1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        select.form-control option {
+            background: #1e293b;
+            color: white;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: #022c22;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(74, 222, 128, 0.3);
+            margin-top: auto;
+        }
+
+        .btn-submit.blue-btn {
+            background: #38bdf8;
+            color: #082f49;
+            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-submit.purple-btn {
+            background: #c084fc;
+            color: #3b0764;
+            box-shadow: 0 10px 15px -3px rgba(192, 132, 252, 0.3);
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 20px -3px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-submit:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn-submit:disabled {
+            background: #64748b !important;
+            color: #cbd5e1 !important;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .status-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.95rem;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .status-success {
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            color: #4ade80;
+        }
+
+        .status-error {
+            background: rgba(248, 113, 113, 0.1);
+            border: 1px solid rgba(248, 113, 113, 0.2);
+            color: #f87171;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loader {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            border-top-color: currentColor;
+            animation: spin 1s ease-in-out infinite;
+            display: none;
+            vertical-align: text-bottom;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+
+    <div class="container">
+        <!-- Application Branding -->
+        <div style="grid-column: 1 / -1; text-align: center; margin-bottom: 1rem; margin-top: -1rem;">
+            <h1 style="font-size: 3.5rem; font-weight: 800; margin: 0; background: linear-gradient(to right, #4ade80, #38bdf8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">FarmCall</h1>
+            <p style="color: #cbd5e1; font-size: 1.15rem; max-width: 700px; margin: 1rem auto 0; line-height: 1.6;">
+                The Voice-First Agricultural Intelligence Engine. FarmCall continuously monitors hyperlocal weather patterns and automatically calls rural farmers with critical, AI-generated advisories in their native languages.
+            </p>
+        </div>
+
+        <!-- New Card: Demo Mode (Stateless) - Spans Full Width -->
+        <div class="glass-card"
+            style="grid-column: 1 / -1; border-color: rgba(244, 114, 182, 0.4); box-shadow: 0 10px 30px -10px rgba(244, 114, 182, 0.2);">
+            <div class="header">
+                <h1 style="background: linear-gradient(to right, #f472b6, #fb7185); -webkit-background-clip: text;">
+                    Demo Mode Call</h1>
+                <p>Instantly test the AI Voice Call without saving to the database.</p>
+            </div>
+
+            <form id="demo-form"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; align-items: end;">
+                <div class="form-group">
+                    <label for="demo_name">Full Name</label>
+                    <input type="text" id="demo_name" class="form-control" placeholder="e.g. Test Farmer" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="demo_phone">Phone Number</label>
+                    <input type="tel" id="demo_phone" class="form-control" placeholder="+91**********" value="+91 "
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="demo_village_name">Village Name</label>
+                    <input type="text" id="demo_village_name" class="form-control" placeholder="e.g. Kuppam" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="demo_mandal">Mandal</label>
+                    <input type="text" id="demo_mandal" class="form-control" placeholder="e.g. Kuppam" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="demo_district">District</label>
+                    <input type="text" id="demo_district" class="form-control" placeholder="e.g. Chittoor" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="demo_state">State</label>
+                    <input type="text" id="demo_state" class="form-control" placeholder="e.g. Andhra Pradesh" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="demo_language">Preferred Language</label>
+                    <select id="demo_language" class="form-control" required>
+                        <option value="English">English</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Tamil">Tamil</option>
+                        <option value="Bengali">Bengali</option>
+                        <option value="Telugu">Telugu</option>
+                        <option value="Kannada">Kannada</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="demo_crop">Primary Crop</label>
+                    <input type="text" id="demo_crop" class="form-control" placeholder="e.g. Paddy, Mixed" value="Mixed"
+                        required>
+                </div>
+
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <button type="submit" id="demo-btn" class="btn-submit"
+                        style="background: linear-gradient(to right, #f472b6, #fb7185); color: white; box-shadow: 0 10px 15px -3px rgba(244, 114, 182, 0.4);">
+                        <div id="demo-loader" class="loader"></div>
+                        <span id="demo-btn-text">Test Live Call (No Save)</span>
+                    </button>
+                </div>
+            </form>
+            <div id="demo-status" class="status-message"></div>
+        </div>
+
+        <!-- Card 1: Single Farmer Connect -->
+        <div class="glass-card">
+            <div class="header">
+                <h1>Farmcall Connect</h1>
+                <p>Register & trigger a single voice advisory.</p>
+            </div>
+
+            <form id="onboard-form" style="display:flex; flex-direction:column; height: 100%;">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" class="form-control" placeholder="e.g. Dinesh" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="+91**********" value="+91 " required>
+                </div>
+
+                <div class="form-group">
+                    <label for="village_name">Village Name</label>
+                    <input type="text" id="village_name" class="form-control" placeholder="e.g. Kuppam" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mandal">Mandal</label>
+                    <input type="text" id="mandal" class="form-control" placeholder="e.g. Kuppam" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="district">District</label>
+                    <input type="text" id="district" class="form-control" placeholder="e.g. Chittoor" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" id="state" class="form-control" placeholder="e.g. Andhra Pradesh" required>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="language">Preferred Language</label>
+                    <select id="language" class="form-control" required>
+                        <option value="English">English</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Tamil">Tamil</option>
+                        <option value="Bengali">Bengali</option>
+                        <option value="Telugu">Telugu</option>
+                        <option value="Kannada">Kannada</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="crop">Primary Crop</label>
+                    <input type="text" id="crop" class="form-control" placeholder="e.g. Paddy, Mixed" value="Mixed"
+                        required>
+                </div>
+
+                <button type="submit" id="submit-btn" class="btn-submit">
+                    <div id="loader-1" class="loader"></div>
+                    <span id="btn-text-1">Register & Call Farmer</span>
+                </button>
+            </form>
+            <div id="status-1" class="status-message"></div>
+        </div>
+
+        <!-- Card 2: Village Broadcast -->
+        <div class="glass-card">
+            <div class="header">
+                <h1 style="background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text;">
+                    Village Broadcast</h1>
+                <p>Call all farmers connected to a specific village.</p>
+            </div>
+
+            <form id="village-form" style="display:flex; flex-direction:column; height: 100%;">
+                <div class="form-group">
+                    <label for="broadcast_village">Target Village Name</label>
+                    <input type="text" id="broadcast_village" class="form-control" placeholder="e.g. Kuppam" required>
+                </div>
+
+                <button type="submit" id="village-btn" class="btn-submit blue-btn" style="margin-top:auto;">
+                    <div id="loader-2" class="loader"></div>
+                    <span id="btn-text-2">Call Village</span>
+                </button>
+            </form>
+            <div id="status-2" class="status-message"></div>
+        </div>
+
+        <!-- Card 3: Global Daily Alert -->
+        <div class="glass-card">
+            <div class="header">
+                <h1 style="background: linear-gradient(to right, #c084fc, #f472b6); -webkit-background-clip: text;">
+                    Global Alert Engine</h1>
+                <p>Trigger the automatic pipeline for every member in the database.</p>
+            </div>
+
+            <div style="flex-grow: 1; display:flex; flex-direction:column; justify-content:center; text-align: center;">
+                <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">
+                    This triggers `/run-daily-alerts`. The system will automatically iterate through all registered
+                    villages, check their respective weather risk, generate localized AI intelligence, and concurrently
+                    dial every farmer in the system if the risk is HIGH.
+                </p>
+                <button id="global-btn" class="btn-submit purple-btn" style="margin-top:auto;">
+                    <div id="loader-3" class="loader"></div>
+                    <span id="btn-text-3">Run Daily Alerts</span>
+                </button>
+            </div>
+
+            <div id="status-3" class="status-message"></div>
+        </div>
+
+    </div>
+
+    <script>
+        async function handleFormSubmit(e, url, method, btnId, loaderId, textId, statusId, payloadCb, loadingText, defaultText) {
+            if (e) e.preventDefault();
+            const btn = document.getElementById(btnId);
+            const btnText = document.getElementById(textId);
+            const loader = document.getElementById(loaderId);
+            const statusMsg = document.getElementById(statusId);
+
+            btn.disabled = true;
+            btnText.textContent = loadingText;
+            loader.style.display = "inline-block";
+            statusMsg.style.display = "none";
+
+            const payload = payloadCb ? payloadCb() : null;
+            const fetchOpts = { method };
+            if (payload) {
+                fetchOpts.headers = { 'Content-Type': 'application/json' };
+                fetchOpts.body = JSON.stringify(payload);
+            }
+
+            try {
+                const response = await fetch(url, fetchOpts);
+                const data = await response.json();
+                statusMsg.style.display = "block";
+                if (response.ok && (data.status === "success" || data.message)) {
+                    statusMsg.className = "status-message status-success";
+                    statusMsg.textContent = "✅ " + (data.message || "Success");
+                } else {
+                    throw new Error(data.detail || data.error || data.message || "Failed to trigger API");
+                }
+            } catch (err) {
+                statusMsg.style.display = "block";
+                statusMsg.className = "status-message status-error";
+                statusMsg.textContent = "❌ Error: " + err.message;
+            } finally {
+                btn.disabled = false;
+                btnText.textContent = defaultText;
+                loader.style.display = "none";
+            }
+        }
+
+        // 0. Demo Mode
+        document.getElementById('demo-form').addEventListener('submit', (e) => {
+            handleFormSubmit(e, '/api/demo-call', 'POST',
+                'demo-btn', 'demo-loader', 'demo-btn-text', 'demo-status',
+                () => ({
+                    name: document.getElementById('demo_name').value,
+                    phone: document.getElementById('demo_phone').value,
+                    village_name: document.getElementById('demo_village_name').value,
+                    mandal: document.getElementById('demo_mandal').value,
+                    district: document.getElementById('demo_district').value,
+                    state: document.getElementById('demo_state').value,
+                    language: document.getElementById('demo_language').value,
+                    crop: document.getElementById('demo_crop').value
+                }),
+                'Initiating Demo...', 'Test Live Call (No Save)'
+            );
+        });
+
+        // 1. Single Farmer
+        document.getElementById('onboard-form').addEventListener('submit', (e) => {
+            handleFormSubmit(e, '/api/register-and-call', 'POST',
+                'submit-btn', 'loader-1', 'btn-text-1', 'status-1',
+                () => ({
+                    name: document.getElementById('name').value,
+                    phone: document.getElementById('phone').value,
+                    village_name: document.getElementById('village_name').value,
+                    mandal: document.getElementById('mandal').value,
+                    district: document.getElementById('district').value,
+                    state: document.getElementById('state').value,
+                    language: document.getElementById('language').value,
+                    crop: document.getElementById('crop').value
+                }),
+                'Connecting...', 'Register & Call Farmer'
+            );
+        });
+
+        // 2. Village Broadcast
+        document.getElementById('village-form').addEventListener('submit', (e) => {
+            handleFormSubmit(e, '/api/call-village', 'POST',
+                'village-btn', 'loader-2', 'btn-text-2', 'status-2',
+                () => ({
+                    village_name: document.getElementById('broadcast_village').value
+                }),
+                'Broadcasting...', 'Call Village'
+            );
+        });
+
+        // 3. Global Broadcast
+        document.getElementById('global-btn').addEventListener('click', (e) => {
+            handleFormSubmit(e, '/run-daily-alerts', 'GET',
+                'global-btn', 'loader-3', 'btn-text-3', 'status-3',
+                null,
+                'Executing Pipeline...', 'Run Daily Alerts'
+            );
+        });
+    </script>
+</body>
+
+</html>

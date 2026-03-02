@@ -1,0 +1,1417 @@
+{
+  "data": {
+    "timelines": [
+      {
+        "timestep": "1d",
+        "endTime": "2026-03-04T06:00:00+05:30",
+        "startTime": "2026-02-27T06:00:00+05:30",
+        "intervals": [
+          {
+            "startTime": "2026-02-27T06:00:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.5,
+              "temperatureMax": 29.5,
+              "temperatureMin": 18,
+              "windSpeed": 3.8
+            }
+          },
+          {
+            "startTime": "2026-02-28T06:00:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.5,
+              "temperatureMax": 29.5,
+              "temperatureMin": 17.4,
+              "windSpeed": 4.9
+            }
+          },
+          {
+            "startTime": "2026-03-01T06:00:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.9,
+              "temperatureMax": 29.9,
+              "temperatureMin": 17.4,
+              "windSpeed": 4
+            }
+          },
+          {
+            "startTime": "2026-03-02T06:00:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 31.2,
+              "temperatureMax": 31.2,
+              "temperatureMin": 17.4,
+              "windSpeed": 4.9
+            }
+          },
+          {
+            "startTime": "2026-03-03T06:00:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 30.6,
+              "temperatureMax": 30.6,
+              "temperatureMin": 18.1,
+              "windSpeed": 5.3
+            }
+          },
+          {
+            "startTime": "2026-03-04T06:00:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 30.9,
+              "temperatureMax": 30.9,
+              "temperatureMin": 17.1,
+              "windSpeed": 5
+            }
+          }
+        ]
+      },
+      {
+        "timestep": "1h",
+        "endTime": "2026-03-04T09:30:00+05:30",
+        "startTime": "2026-02-27T09:30:00+05:30",
+        "intervals": [
+          {
+            "startTime": "2026-02-27T09:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 24.8,
+              "temperatureMax": 24.8,
+              "temperatureMin": 24.8,
+              "windSpeed": 2.2
+            }
+          },
+          {
+            "startTime": "2026-02-27T10:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 26.5,
+              "temperatureMax": 26.5,
+              "temperatureMin": 26.5,
+              "windSpeed": 2.1
+            }
+          },
+          {
+            "startTime": "2026-02-27T11:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 27.7,
+              "temperatureMax": 27.7,
+              "temperatureMin": 27.7,
+              "windSpeed": 1.8
+            }
+          },
+          {
+            "startTime": "2026-02-27T12:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 28.6,
+              "temperatureMax": 28.6,
+              "temperatureMin": 28.6,
+              "windSpeed": 1.3
+            }
+          },
+          {
+            "startTime": "2026-02-27T13:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.2,
+              "temperatureMax": 29.2,
+              "temperatureMin": 29.2,
+              "windSpeed": 1.6
+            }
+          },
+          {
+            "startTime": "2026-02-27T14:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.5,
+              "temperatureMax": 29.5,
+              "temperatureMin": 29.5,
+              "windSpeed": 1.9
+            }
+          },
+          {
+            "startTime": "2026-02-27T15:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.5,
+              "temperatureMax": 29.5,
+              "temperatureMin": 29.5,
+              "windSpeed": 2.4
+            }
+          },
+          {
+            "startTime": "2026-02-27T16:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29,
+              "temperatureMax": 29,
+              "temperatureMin": 29,
+              "windSpeed": 2.3
+            }
+          },
+          {
+            "startTime": "2026-02-27T17:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 28.6,
+              "temperatureMax": 28.6,
+              "temperatureMin": 28.6,
+              "windSpeed": 1.6
+            }
+          },
+          {
+            "startTime": "2026-02-27T18:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 24.9,
+              "temperatureMax": 24.9,
+              "temperatureMin": 24.9,
+              "windSpeed": 2
+            }
+          },
+          {
+            "startTime": "2026-02-27T19:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 23.9,
+              "temperatureMax": 23.9,
+              "temperatureMin": 23.9,
+              "windSpeed": 2.5
+            }
+          },
+          {
+            "startTime": "2026-02-27T20:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 23,
+              "temperatureMax": 23,
+              "temperatureMin": 23,
+              "windSpeed": 1.9
+            }
+          },
+          {
+            "startTime": "2026-02-27T21:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 22.5,
+              "temperatureMax": 22.5,
+              "temperatureMin": 22.5,
+              "windSpeed": 1.9
+            }
+          },
+          {
+            "startTime": "2026-02-27T22:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 22,
+              "temperatureMax": 22,
+              "temperatureMin": 22,
+              "windSpeed": 3.8
+            }
+          },
+          {
+            "startTime": "2026-02-27T23:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 20.4,
+              "temperatureMax": 20.4,
+              "temperatureMin": 20.4,
+              "windSpeed": 3.1
+            }
+          },
+          {
+            "startTime": "2026-02-28T00:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 19.7,
+              "temperatureMax": 19.7,
+              "temperatureMin": 19.7,
+              "windSpeed": 2.8
+            }
+          },
+          {
+            "startTime": "2026-02-28T01:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 19.4,
+              "temperatureMax": 19.4,
+              "temperatureMin": 19.4,
+              "windSpeed": 2.8
+            }
+          },
+          {
+            "startTime": "2026-02-28T02:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.7,
+              "temperatureMax": 18.7,
+              "temperatureMin": 18.7,
+              "windSpeed": 2.4
+            }
+          },
+          {
+            "startTime": "2026-02-28T03:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.6,
+              "temperatureMax": 18.6,
+              "temperatureMin": 18.6,
+              "windSpeed": 2.4
+            }
+          },
+          {
+            "startTime": "2026-02-28T04:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.4,
+              "temperatureMax": 18.4,
+              "temperatureMin": 18.4,
+              "windSpeed": 2.6
+            }
+          },
+          {
+            "startTime": "2026-02-28T05:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18,
+              "temperatureMax": 18,
+              "temperatureMin": 18,
+              "windSpeed": 2.3
+            }
+          },
+          {
+            "startTime": "2026-02-28T06:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 17.4,
+              "temperatureMax": 17.4,
+              "temperatureMin": 17.4,
+              "windSpeed": 1.9
+            }
+          },
+          {
+            "startTime": "2026-02-28T07:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 19.1,
+              "temperatureMax": 19.1,
+              "temperatureMin": 19.1,
+              "windSpeed": 2.5
+            }
+          },
+          {
+            "startTime": "2026-02-28T08:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 22.4,
+              "temperatureMax": 22.4,
+              "temperatureMin": 22.4,
+              "windSpeed": 2.2
+            }
+          },
+          {
+            "startTime": "2026-02-28T09:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 24.9,
+              "temperatureMax": 24.9,
+              "temperatureMin": 24.9,
+              "windSpeed": 2.9
+            }
+          },
+          {
+            "startTime": "2026-02-28T10:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 26.6,
+              "temperatureMax": 26.6,
+              "temperatureMin": 26.6,
+              "windSpeed": 3.1
+            }
+          },
+          {
+            "startTime": "2026-02-28T11:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 27.7,
+              "temperatureMax": 27.7,
+              "temperatureMin": 27.7,
+              "windSpeed": 2.5
+            }
+          },
+          {
+            "startTime": "2026-02-28T12:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 28.7,
+              "temperatureMax": 28.7,
+              "temperatureMin": 28.7,
+              "windSpeed": 1.6
+            }
+          },
+          {
+            "startTime": "2026-02-28T13:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.2,
+              "temperatureMax": 29.2,
+              "temperatureMin": 29.2,
+              "windSpeed": 0.8
+            }
+          },
+          {
+            "startTime": "2026-02-28T14:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.4,
+              "temperatureMax": 29.4,
+              "temperatureMin": 29.4,
+              "windSpeed": 0.3
+            }
+          },
+          {
+            "startTime": "2026-02-28T15:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.5,
+              "temperatureMax": 29.5,
+              "temperatureMin": 29.5,
+              "windSpeed": 1
+            }
+          },
+          {
+            "startTime": "2026-02-28T16:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.5,
+              "temperatureMax": 29.5,
+              "temperatureMin": 29.5,
+              "windSpeed": 1.2
+            }
+          },
+          {
+            "startTime": "2026-02-28T17:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 28.8,
+              "temperatureMax": 28.8,
+              "temperatureMin": 28.8,
+              "windSpeed": 1.6
+            }
+          },
+          {
+            "startTime": "2026-02-28T18:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 26.5,
+              "temperatureMax": 26.5,
+              "temperatureMin": 26.5,
+              "windSpeed": 3.1
+            }
+          },
+          {
+            "startTime": "2026-02-28T19:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 24.3,
+              "temperatureMax": 24.3,
+              "temperatureMin": 24.3,
+              "windSpeed": 1.6
+            }
+          },
+          {
+            "startTime": "2026-02-28T20:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 23,
+              "temperatureMax": 23,
+              "temperatureMin": 23,
+              "windSpeed": 1.3
+            }
+          },
+          {
+            "startTime": "2026-02-28T21:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 22.5,
+              "temperatureMax": 22.5,
+              "temperatureMin": 22.5,
+              "windSpeed": 2.5
+            }
+          },
+          {
+            "startTime": "2026-02-28T22:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 22.1,
+              "temperatureMax": 22.1,
+              "temperatureMin": 22.1,
+              "windSpeed": 4.9
+            }
+          },
+          {
+            "startTime": "2026-02-28T23:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 20.7,
+              "temperatureMax": 20.7,
+              "temperatureMin": 20.7,
+              "windSpeed": 4
+            }
+          },
+          {
+            "startTime": "2026-03-01T00:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 20,
+              "temperatureMax": 20,
+              "temperatureMin": 20,
+              "windSpeed": 4
+            }
+          },
+          {
+            "startTime": "2026-03-01T01:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 19.5,
+              "temperatureMax": 19.5,
+              "temperatureMin": 19.5,
+              "windSpeed": 3.2
+            }
+          },
+          {
+            "startTime": "2026-03-01T02:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.9,
+              "temperatureMax": 18.9,
+              "temperatureMin": 18.9,
+              "windSpeed": 3.1
+            }
+          },
+          {
+            "startTime": "2026-03-01T03:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.3,
+              "temperatureMax": 18.3,
+              "temperatureMin": 18.3,
+              "windSpeed": 2.5
+            }
+          },
+          {
+            "startTime": "2026-03-01T04:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 17.5,
+              "temperatureMax": 17.5,
+              "temperatureMin": 17.5,
+              "windSpeed": 1.6
+            }
+          },
+          {
+            "startTime": "2026-03-01T05:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 17.4,
+              "temperatureMax": 17.4,
+              "temperatureMin": 17.4,
+              "windSpeed": 1.2
+            }
+          },
+          {
+            "startTime": "2026-03-01T06:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 17.4,
+              "temperatureMax": 17.4,
+              "temperatureMin": 17.4,
+              "windSpeed": 1.9
+            }
+          },
+          {
+            "startTime": "2026-03-01T07:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 19.6,
+              "temperatureMax": 19.6,
+              "temperatureMin": 19.6,
+              "windSpeed": 3.1
+            }
+          },
+          {
+            "startTime": "2026-03-01T08:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 22.7,
+              "temperatureMax": 22.7,
+              "temperatureMin": 22.7,
+              "windSpeed": 3
+            }
+          },
+          {
+            "startTime": "2026-03-01T09:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 24.9,
+              "temperatureMax": 24.9,
+              "temperatureMin": 24.9,
+              "windSpeed": 3
+            }
+          },
+          {
+            "startTime": "2026-03-01T10:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 26.4,
+              "temperatureMax": 26.4,
+              "temperatureMin": 26.4,
+              "windSpeed": 2.2
+            }
+          },
+          {
+            "startTime": "2026-03-01T11:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 27.6,
+              "temperatureMax": 27.6,
+              "temperatureMin": 27.6,
+              "windSpeed": 1.4
+            }
+          },
+          {
+            "startTime": "2026-03-01T12:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 28.6,
+              "temperatureMax": 28.6,
+              "temperatureMin": 28.6,
+              "windSpeed": 0.8
+            }
+          },
+          {
+            "startTime": "2026-03-01T13:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.2,
+              "temperatureMax": 29.2,
+              "temperatureMin": 29.2,
+              "windSpeed": 0.9
+            }
+          },
+          {
+            "startTime": "2026-03-01T14:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.7,
+              "temperatureMax": 29.7,
+              "temperatureMin": 29.7,
+              "windSpeed": 1.1
+            }
+          },
+          {
+            "startTime": "2026-03-01T15:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.9,
+              "temperatureMax": 29.9,
+              "temperatureMin": 29.9,
+              "windSpeed": 1.4
+            }
+          },
+          {
+            "startTime": "2026-03-01T16:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.9,
+              "temperatureMax": 29.9,
+              "temperatureMin": 29.9,
+              "windSpeed": 1.5
+            }
+          },
+          {
+            "startTime": "2026-03-01T17:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.2,
+              "temperatureMax": 29.2,
+              "temperatureMin": 29.2,
+              "windSpeed": 1.7
+            }
+          },
+          {
+            "startTime": "2026-03-01T18:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 26.1,
+              "temperatureMax": 26.1,
+              "temperatureMin": 26.1,
+              "windSpeed": 1.9
+            }
+          },
+          {
+            "startTime": "2026-03-01T19:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 24.5,
+              "temperatureMax": 24.5,
+              "temperatureMin": 24.5,
+              "windSpeed": 2.1
+            }
+          },
+          {
+            "startTime": "2026-03-01T20:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 23.7,
+              "temperatureMax": 23.7,
+              "temperatureMin": 23.7,
+              "windSpeed": 0.7
+            }
+          },
+          {
+            "startTime": "2026-03-01T21:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 22.6,
+              "temperatureMax": 22.6,
+              "temperatureMin": 22.6,
+              "windSpeed": 2.9
+            }
+          },
+          {
+            "startTime": "2026-03-01T22:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 22,
+              "temperatureMax": 22,
+              "temperatureMin": 22,
+              "windSpeed": 4
+            }
+          },
+          {
+            "startTime": "2026-03-01T23:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 20.4,
+              "temperatureMax": 20.4,
+              "temperatureMin": 20.4,
+              "windSpeed": 2.5
+            }
+          },
+          {
+            "startTime": "2026-03-02T00:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 19.4,
+              "temperatureMax": 19.4,
+              "temperatureMin": 19.4,
+              "windSpeed": 2
+            }
+          },
+          {
+            "startTime": "2026-03-02T01:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.7,
+              "temperatureMax": 18.7,
+              "temperatureMin": 18.7,
+              "windSpeed": 1.8
+            }
+          },
+          {
+            "startTime": "2026-03-02T02:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.1,
+              "temperatureMax": 18.1,
+              "temperatureMin": 18.1,
+              "windSpeed": 1.3
+            }
+          },
+          {
+            "startTime": "2026-03-02T03:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.2,
+              "temperatureMax": 18.2,
+              "temperatureMin": 18.2,
+              "windSpeed": 2.1
+            }
+          },
+          {
+            "startTime": "2026-03-02T04:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.5,
+              "temperatureMax": 18.5,
+              "temperatureMin": 18.5,
+              "windSpeed": 2.6
+            }
+          },
+          {
+            "startTime": "2026-03-02T05:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 17.8,
+              "temperatureMax": 17.8,
+              "temperatureMin": 17.8,
+              "windSpeed": 2.1
+            }
+          },
+          {
+            "startTime": "2026-03-02T06:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 17.4,
+              "temperatureMax": 17.4,
+              "temperatureMin": 17.4,
+              "windSpeed": 2
+            }
+          },
+          {
+            "startTime": "2026-03-02T07:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 19.6,
+              "temperatureMax": 19.6,
+              "temperatureMin": 19.6,
+              "windSpeed": 2.3
+            }
+          },
+          {
+            "startTime": "2026-03-02T08:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 23.1,
+              "temperatureMax": 23.1,
+              "temperatureMin": 23.1,
+              "windSpeed": 1.5
+            }
+          },
+          {
+            "startTime": "2026-03-02T09:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 25.8,
+              "temperatureMax": 25.8,
+              "temperatureMin": 25.8,
+              "windSpeed": 2
+            }
+          },
+          {
+            "startTime": "2026-03-02T10:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 27.7,
+              "temperatureMax": 27.7,
+              "temperatureMin": 27.7,
+              "windSpeed": 2.1
+            }
+          },
+          {
+            "startTime": "2026-03-02T11:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29,
+              "temperatureMax": 29,
+              "temperatureMin": 29,
+              "windSpeed": 2.3
+            }
+          },
+          {
+            "startTime": "2026-03-02T12:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 30,
+              "temperatureMax": 30,
+              "temperatureMin": 30,
+              "windSpeed": 2.8
+            }
+          },
+          {
+            "startTime": "2026-03-02T13:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 31.2,
+              "temperatureMax": 31.2,
+              "temperatureMin": 31.2,
+              "windSpeed": 4.2
+            }
+          },
+          {
+            "startTime": "2026-03-02T14:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 31.2,
+              "temperatureMax": 31.2,
+              "temperatureMin": 31.2,
+              "windSpeed": 4.5
+            }
+          },
+          {
+            "startTime": "2026-03-02T15:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 30.2,
+              "temperatureMax": 30.2,
+              "temperatureMin": 30.2,
+              "windSpeed": 4.9
+            }
+          },
+          {
+            "startTime": "2026-03-02T16:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 30,
+              "temperatureMax": 30,
+              "temperatureMin": 30,
+              "windSpeed": 3.4
+            }
+          },
+          {
+            "startTime": "2026-03-02T17:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.7,
+              "temperatureMax": 29.7,
+              "temperatureMin": 29.7,
+              "windSpeed": 2.4
+            }
+          },
+          {
+            "startTime": "2026-03-02T18:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 28,
+              "temperatureMax": 28,
+              "temperatureMin": 28,
+              "windSpeed": 3
+            }
+          },
+          {
+            "startTime": "2026-03-02T19:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 26.3,
+              "temperatureMax": 26.3,
+              "temperatureMin": 26.3,
+              "windSpeed": 3.5
+            }
+          },
+          {
+            "startTime": "2026-03-02T20:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 24.6,
+              "temperatureMax": 24.6,
+              "temperatureMin": 24.6,
+              "windSpeed": 4
+            }
+          },
+          {
+            "startTime": "2026-03-02T21:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 23.2,
+              "temperatureMax": 23.2,
+              "temperatureMin": 23.2,
+              "windSpeed": 3.3
+            }
+          },
+          {
+            "startTime": "2026-03-02T22:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 21.8,
+              "temperatureMax": 21.8,
+              "temperatureMin": 21.8,
+              "windSpeed": 2.6
+            }
+          },
+          {
+            "startTime": "2026-03-02T23:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 20.4,
+              "temperatureMax": 20.4,
+              "temperatureMin": 20.4,
+              "windSpeed": 1.9
+            }
+          },
+          {
+            "startTime": "2026-03-03T00:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 20,
+              "temperatureMax": 20,
+              "temperatureMin": 20,
+              "windSpeed": 2
+            }
+          },
+          {
+            "startTime": "2026-03-03T01:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 19.7,
+              "temperatureMax": 19.7,
+              "temperatureMin": 19.7,
+              "windSpeed": 2.1
+            }
+          },
+          {
+            "startTime": "2026-03-03T02:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 19.3,
+              "temperatureMax": 19.3,
+              "temperatureMin": 19.3,
+              "windSpeed": 2.2
+            }
+          },
+          {
+            "startTime": "2026-03-03T03:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.9,
+              "temperatureMax": 18.9,
+              "temperatureMin": 18.9,
+              "windSpeed": 2.2
+            }
+          },
+          {
+            "startTime": "2026-03-03T04:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.5,
+              "temperatureMax": 18.5,
+              "temperatureMin": 18.5,
+              "windSpeed": 2.2
+            }
+          },
+          {
+            "startTime": "2026-03-03T05:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.1,
+              "temperatureMax": 18.1,
+              "temperatureMin": 18.1,
+              "windSpeed": 2.1
+            }
+          },
+          {
+            "startTime": "2026-03-03T06:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 19.9,
+              "temperatureMax": 19.9,
+              "temperatureMin": 19.9,
+              "windSpeed": 2.1
+            }
+          },
+          {
+            "startTime": "2026-03-03T07:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 21.7,
+              "temperatureMax": 21.7,
+              "temperatureMin": 21.7,
+              "windSpeed": 2.1
+            }
+          },
+          {
+            "startTime": "2026-03-03T08:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 23.5,
+              "temperatureMax": 23.5,
+              "temperatureMin": 23.5,
+              "windSpeed": 2.1
+            }
+          },
+          {
+            "startTime": "2026-03-03T09:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 25.6,
+              "temperatureMax": 25.6,
+              "temperatureMin": 25.6,
+              "windSpeed": 3.1
+            }
+          },
+          {
+            "startTime": "2026-03-03T10:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 27.6,
+              "temperatureMax": 27.6,
+              "temperatureMin": 27.6,
+              "windSpeed": 4
+            }
+          },
+          {
+            "startTime": "2026-03-03T11:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.6,
+              "temperatureMax": 29.6,
+              "temperatureMin": 29.6,
+              "windSpeed": 4.9
+            }
+          },
+          {
+            "startTime": "2026-03-03T12:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 30,
+              "temperatureMax": 30,
+              "temperatureMin": 30,
+              "windSpeed": 5
+            }
+          },
+          {
+            "startTime": "2026-03-03T13:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 30.3,
+              "temperatureMax": 30.3,
+              "temperatureMin": 30.3,
+              "windSpeed": 5.1
+            }
+          },
+          {
+            "startTime": "2026-03-03T14:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 30.6,
+              "temperatureMax": 30.6,
+              "temperatureMin": 30.6,
+              "windSpeed": 5.3
+            }
+          },
+          {
+            "startTime": "2026-03-03T15:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 30,
+              "temperatureMax": 30,
+              "temperatureMin": 30,
+              "windSpeed": 5
+            }
+          },
+          {
+            "startTime": "2026-03-03T16:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 29.3,
+              "temperatureMax": 29.3,
+              "temperatureMin": 29.3,
+              "windSpeed": 4.8
+            }
+          },
+          {
+            "startTime": "2026-03-03T17:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 28.7,
+              "temperatureMax": 28.7,
+              "temperatureMin": 28.7,
+              "windSpeed": 4.5
+            }
+          },
+          {
+            "startTime": "2026-03-03T18:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 27.2,
+              "temperatureMax": 27.2,
+              "temperatureMin": 27.2,
+              "windSpeed": 4.3
+            }
+          },
+          {
+            "startTime": "2026-03-03T19:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 25.7,
+              "temperatureMax": 25.7,
+              "temperatureMin": 25.7,
+              "windSpeed": 4.1
+            }
+          },
+          {
+            "startTime": "2026-03-03T20:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 24.1,
+              "temperatureMax": 24.1,
+              "temperatureMin": 24.1,
+              "windSpeed": 3.9
+            }
+          },
+          {
+            "startTime": "2026-03-03T21:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 22.7,
+              "temperatureMax": 22.7,
+              "temperatureMin": 22.7,
+              "windSpeed": 3.2
+            }
+          },
+          {
+            "startTime": "2026-03-03T22:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 21.3,
+              "temperatureMax": 21.3,
+              "temperatureMin": 21.3,
+              "windSpeed": 2.4
+            }
+          },
+          {
+            "startTime": "2026-03-03T23:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 19.9,
+              "temperatureMax": 19.9,
+              "temperatureMin": 19.9,
+              "windSpeed": 1.7
+            }
+          },
+          {
+            "startTime": "2026-03-04T00:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 19.4,
+              "temperatureMax": 19.4,
+              "temperatureMin": 19.4,
+              "windSpeed": 1.4
+            }
+          },
+          {
+            "startTime": "2026-03-04T01:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 19,
+              "temperatureMax": 19,
+              "temperatureMin": 19,
+              "windSpeed": 1.1
+            }
+          },
+          {
+            "startTime": "2026-03-04T02:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.5,
+              "temperatureMax": 18.5,
+              "temperatureMin": 18.5,
+              "windSpeed": 0.9
+            }
+          },
+          {
+            "startTime": "2026-03-04T03:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.4,
+              "temperatureMax": 18.4,
+              "temperatureMin": 18.4,
+              "windSpeed": 0.8
+            }
+          },
+          {
+            "startTime": "2026-03-04T04:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.4,
+              "temperatureMax": 18.4,
+              "temperatureMin": 18.4,
+              "windSpeed": 0.7
+            }
+          },
+          {
+            "startTime": "2026-03-04T05:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 18.4,
+              "temperatureMax": 18.4,
+              "temperatureMin": 18.4,
+              "windSpeed": 0.6
+            }
+          },
+          {
+            "startTime": "2026-03-04T06:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 20,
+              "temperatureMax": 20,
+              "temperatureMin": 20,
+              "windSpeed": 0.9
+            }
+          },
+          {
+            "startTime": "2026-03-04T07:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 21.7,
+              "temperatureMax": 21.7,
+              "temperatureMin": 21.7,
+              "windSpeed": 1.1
+            }
+          },
+          {
+            "startTime": "2026-03-04T08:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 23.3,
+              "temperatureMax": 23.3,
+              "temperatureMin": 23.3,
+              "windSpeed": 1.4
+            }
+          },
+          {
+            "startTime": "2026-03-04T09:30:00+05:30",
+            "values": {
+              "precipitationProbability": 0,
+              "rainAccumulation": 0,
+              "temperature": 25.3,
+              "temperatureMax": 25.3,
+              "temperatureMin": 25.3,
+              "windSpeed": 2.6
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
