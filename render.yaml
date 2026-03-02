@@ -34,4 +34,3 @@ databases:
     plan: free
     region: ohio
     databaseName: farmcall_db
-    user: postgres
