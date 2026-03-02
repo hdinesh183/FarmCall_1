@@ -5,6 +5,6 @@ psycopg2-binary==2.9.11
 python-dotenv==1.2.1
 requests==2.32.5
 twilio==9.10.2
-google-generativeai
+google-genai
 APScheduler
 gunicorn==21.2.0
