@@ -67,6 +67,7 @@ class Advisory(Base):
     risk_type = Column(String(100))
     advisory_text = Column(TEXT, nullable=False)
     audio_filename = Column(TEXT)
+    audio_duration = Column(Float, default=0.0)
     language = Column(String(50), nullable=False)
     ai_model_used = Column(String(100))
     trigger_type = Column(String(20), default='auto')
@@ -89,6 +90,9 @@ class AdvisoryCall(Base):
     farmer_id = Column(Integer, ForeignKey('farmers.id'))
     call_status = Column(String(50))
     call_time = Column(TIMESTAMP)
+    twilio_sid = Column(String(100), unique=True, index=True)
+    call_duration = Column(Integer, default=0)
+    retry_count = Column(Integer, default=0)
 
     # Establish relationships
     advisory = relationship("Advisory", back_populates="calls")

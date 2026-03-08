@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmCall Admin Dashboard</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent: #4ade80;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-dark);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        h1 {
+            margin: 0;
+            background: linear-gradient(to right, #4ade80, #38bdf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #fff;
+        }
+
+        .btn-refresh {
+            background: #3b82f6;
+        }
+
+        .btn-refresh:hover {
+            background: #2563eb;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: #000;
+        }
+
+        .btn-warning:hover {
+            background: #d97706;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        th {
+            color: #94a3b8;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        .loader {
+            display: none;
+            margin: 2rem auto;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: var(--accent);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>FarmCall Control Center</h1>
+                <p style="color: #94a3b8; margin: 0.5rem 0 0 0;">Live Database Management</p>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <button class="btn-refresh" onclick="fetchData()">🔄 Refresh Live Data</button>
+                <button class="btn-danger" style="box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);"
+                    onclick="wipeDatabase()">☢️ NUCLEAR WIPE ALL DATA</button>
+                <a href="/" style="color: #38bdf8; text-decoration: none; padding: 0.5rem;">Back to App</a>
+            </div>
+        </div>
+
+        <div id="loading" class="loader"></div>
+
+        <div class="glass-panel">
+            <h2 style="margin-top: 0;">🚜 Registered Farmers</h2>
+            <div style="overflow-x: auto;">
+                <table id="farmers-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Village ID</th>
+                            <th>Language</th>
+                            <th>Crop</th>
+                            <th>Joined</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="glass-panel">
+            <h2 style="margin-top: 0;">🏘️ Indexed Villages</h2>
+            <div style="overflow-x: auto;">
+                <table id="villages-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Village Name</th>
+                            <th>Mandal</th>
+                            <th>District</th>
+                            <th>State</th>
+                            <th>Coords (Lat, Lon)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Farmer Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h2 style="margin-top: 0;">Edit Farmer Details</h2>
+            <form id="editForm" onsubmit="submitEdit(event)">
+                <input type="hidden" id="edit_phone">
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="edit_name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Language</label>
+                    <select id="edit_language" class="form-control" required>
+                        <option value="English">English</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Tamil">Tamil</option>
+                        <option value="Bengali">Bengali</option>
+                        <option value="Telugu">Telugu</option>
+                        <option value="Kannada">Kannada</option>
+                        <option value="Malayalam">Malayalam</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Crop</label>
+                    <input type="text" id="edit_crop" class="form-control" required>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button type="button" style="background: #475569;" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn-refresh" style="flex-grow: 1;">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let adminPassword = null;
+
+        // Fetch data on load
+        document.addEventListener('DOMContentLoaded', fetchData);
+
+        async function fetchData() {
+            if (!adminPassword) {
+                adminPassword = prompt("Enter FarmCall Admin Password:");
+                if (!adminPassword) {
+                    alert("Authentication required. Please refresh.");
+                    return;
+                }
+            }
+
+            document.getElementById('loading').style.display = 'block';
+            try {
+                const authHeader = 'Basic ' + btoa(`admin:${adminPassword}`);
+                const response = await fetch('/api/admin/data', {
+                    headers: {
+                        'Authorization': authHeader
+                    }
+                });
+
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        adminPassword = null;
+                        throw new Error("Invalid password");
+                    }
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                renderFarmers(data.farmers);
+                renderVillages(data.villages);
+            } catch (err) {
+                alert('Failed to connect to backend: ' + err.message);
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        function renderFarmers(farmers) {
+            const tbody = document.querySelector('#farmers-table tbody');
+            tbody.innerHTML = '';
+
+            if (farmers.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; color:#64748b;">No farmers registered yet.</td></tr>';
+                return;
+            }
+
+            farmers.forEach(f => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${f.id}</td>
+                    <td><strong>${f.name}</strong></td>
+                    <td style="font-family: monospace;">${f.phone}</td>
+                    <td>${f.village_id}</td>
+                    <td><span style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem;">${f.language}</span></td>
+                    <td>${f.crop}</td>
+                    <td>${new Date(f.created_at).toLocaleDateString()}</td>
+                    <td>
+                        <button class="btn-warning" onclick="openEditModal('${f.phone}', '${f.name}', '${f.language}', '${f.crop}')">✏️ Edit</button>
+                        <button class="btn-danger" style="margin-left: 0.5rem;" onclick="deleteFarmer('${f.phone}')">🗑️ Delete</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderVillages(villages) {
+            const tbody = document.querySelector('#villages-table tbody');
+            tbody.innerHTML = '';
+
+            if (villages.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:#64748b;">No villages indexed yet.</td></tr>';
+                return;
+            }
+
+            villages.forEach(v => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${v.id}</td>
+                    <td><strong>${v.village_name}</strong></td>
+                    <td>${v.mandal}</td>
+                    <td>${v.district}</td>
+                    <td>${v.state}</td>
+                    <td style="font-family: monospace; font-size: 0.85rem;">[${v.latitude.toFixed(4)}, ${v.longitude.toFixed(4)}]</td>
+                    <td>
+                        <button class="btn-danger" onclick="deleteVillage(${v.id}, '${v.village_name}')">🗑️ Delete (Cascade)</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Action Functions
+        async function deleteFarmer(phone) {
+            if (!confirm(`Are you absolutely sure you want to delete the farmer with phone ${phone}?`)) return;
+            if (!adminPassword) return;
+
+            const authHeader = 'Basic ' + btoa(`admin:${adminPassword}`);
+            await fetch(`/api/admin/farmers/${encodeURIComponent(phone)}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': authHeader }
+            });
+            fetchData();
+        }
+
+        async function deleteVillage(id, name) {
+            if (!confirm(`WARNING: Deleting village "${name}" will CASCADE DELETE all farmers and history associated with this village. Proceed?`)) return;
+            if (!adminPassword) return;
+
+            const authHeader = 'Basic ' + btoa(`admin:${adminPassword}`);
+            await fetch(`/api/admin/villages/${id}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': authHeader }
+            });
+            fetchData();
+        }
+
+        async function wipeDatabase() {
+            const code = prompt('NUCLEAR WIPE INITIATED. This deletes ALL Tables. Type "DROP ALL" to confirm:');
+            if (code !== "DROP ALL") {
+                alert("Wipe aborted.");
+                return;
+            }
+            if (!adminPassword) return;
+
+            const authHeader = 'Basic ' + btoa(`admin:${adminPassword}`);
+            await fetch(`/api/admin/reset`, {
+                method: 'DELETE',
+                headers: { 'Authorization': authHeader }
+            });
+            alert("Database completely erased. Refreshing...");
+            fetchData();
+        }
+
+        // Modal Logic
+        function openEditModal(phone, name, language, crop) {
+            document.getElementById('edit_phone').value = phone;
+            document.getElementById('edit_name').value = name;
+            document.getElementById('edit_language').value = language;
+            document.getElementById('edit_crop').value = crop;
+            document.getElementById('editModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        async function submitEdit(e) {
+            e.preventDefault();
+            const phone = document.getElementById('edit_phone').value;
+            const payload = {
+                name: document.getElementById('edit_name').value,
+                language: document.getElementById('edit_language').value,
+                crop: document.getElementById('edit_crop').value
+            };
+            if (!adminPassword) return;
+
+            const authHeader = 'Basic ' + btoa(`admin:${adminPassword}`);
+            await fetch(`/api/admin/farmers/${encodeURIComponent(phone)}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': authHeader
+                },
+                body: JSON.stringify(payload)
+            });
+
+            closeModal();
+            fetchData();
+        }
+    </script>
+</body>
+
+</html>

@@ -20,19 +20,32 @@ def make_twilio_call(phone_number, audio_url, language="English"):
     tw_lang, tw_text = lang_map.get(language, lang_map["English"])
     
     import html
+    import urllib.parse
+    from config import NGROK_URL
+
     safe_audio_url = html.escape(audio_url)
+    encoded_audio = urllib.parse.quote(audio_url)
+    encoded_lang = urllib.parse.quote(language)
+    
+    action_url = f"{NGROK_URL}/api/twilio/repeat?audio_url={encoded_audio}&language={encoded_lang}"
+    safe_action_url = html.escape(action_url)
 
     twiml = f"""
     <Response>
         <Say language="{tw_lang}">{tw_text}</Say>
-        <Play>{safe_audio_url}</Play>
+        <Gather numDigits="1" action="{safe_action_url}" method="POST" timeout="5">
+            <Play>{safe_audio_url}</Play>
+        </Gather>
+        <Say language="{tw_lang}">Goodbye.</Say>
     </Response>
     """
-
+    
     call = client.calls.create(
         twiml=twiml,
         to=phone_number,
-        from_=TWILIO_PHONE_NUMBER
+        from_=TWILIO_PHONE_NUMBER,
+        status_callback=f"{NGROK_URL}/api/twilio/webhook",
+        status_callback_event=['completed', 'no-answer', 'busy', 'failed']
     )
 
     return call.sid

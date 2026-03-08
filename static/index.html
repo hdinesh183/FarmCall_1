@@ -309,7 +309,14 @@
 
     <div class="container">
         <!-- Application Branding -->
-        <div style="grid-column: 1 / -1; text-align: center; margin-bottom: 1rem; margin-top: -1rem;">
+        <div
+            style="grid-column: 1 / -1; text-align: center; margin-bottom: 1rem; margin-top: -1rem; position: relative;">
+            <a href="/admin"
+                style="position: absolute; right: 0; top: 0; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; padding: 0.5rem 1rem; border-radius: 20px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: all 0.3s ease;"
+                onmouseover="this.style.background='rgba(56, 189, 248, 0.2)'"
+                onmouseout="this.style.background='rgba(56, 189, 248, 0.1)'">
+                🛡️ Admin
+            </a>
             <h1 class="main-title"
                 style="font-size: 3.5rem; font-weight: 800; margin: 0; background: linear-gradient(to right, #4ade80, #38bdf8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
                 FarmCall</h1>
@@ -321,14 +328,112 @@
             </p>
         </div>
 
-        <!-- New Card: Demo Mode (Stateless) - Spans Full Width -->
+        <!-- Live Analytics Dashboard -->
+        <div class="glass-card"
+            style="grid-column: 1 / -1; border-color: rgba(56, 189, 248, 0.4); margin-bottom: 2rem;">
+            <div class="header"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+                <h2
+                    style="margin: 0; color: #38bdf8; font-size: 1.8rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+                    <span
+                        style="display:inline-block; width:8px; height:8px; border-radius:50%; background-color:#4ade80; box-shadow: 0 0 10px #4ade80;"></span>
+                    Live Pulse
+                </h2>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <select id="stats-filter" onchange="fetchStats()" style="background: rgba(0,0,0,0.3); color: #cbd5e1; border: 1px solid var(--glass-border); border-radius: 8px; padding: 0.4rem 0.8rem; font-family: inherit; font-size: 0.85rem; outline: none; cursor: pointer;">
+                        <option value="daily">Daily Pulse</option>
+                        <option value="lifetime">Lifetime Analytics</option>
+                    </select>
+                    <button onclick="clearAnalytics()"
+                        style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444; padding: 0.4rem 0.8rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.2s ease; font-size: 0.85rem;">
+                        🗑️ Clear History
+                    </button>
+                    <button onclick="fetchStats()" onmouseover="this.style.background='rgba(56, 189, 248, 0.2)'"
+                        onmouseout="this.style.background='rgba(56, 189, 248, 0.1)'"
+                        style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; padding: 0.4rem 0.8rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.2s ease; font-size: 0.85rem;">
+                        ↻ Refresh
+                    </button>
+                </div>
+            </div>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 2.5rem; text-align: left; padding: 1rem 0;">
+
+                <div>
+                    <div
+                        style="font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;">
+                        Total Calls</div>
+                    <div id="stat-calls"
+                        style="font-size: 3.2rem; font-weight: 800; color: #e2e8f0; margin-top: 0.2rem; line-height: 1;">
+                        -</div>
+                </div>
+
+                <div>
+                    <div
+                        style="font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;">
+                        Answered</div>
+                    <div id="stat-answered"
+                        style="font-size: 3.2rem; font-weight: 800; color: #4ade80; margin-top: 0.2rem; line-height: 1;">
+                        -</div>
+                </div>
+
+                <div>
+                    <div
+                        style="font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;">
+                        Missed/Busy</div>
+                    <div id="stat-unanswered"
+                        style="font-size: 3.2rem; font-weight: 800; color: #f87171; margin-top: 0.2rem; line-height: 1;">
+                        -</div>
+                </div>
+
+                <div>
+                    <div
+                        style="font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;">
+                        Full Listen <span style="font-size:0.65rem; color:#475569;">(>35s)</span></div>
+                    <div id="stat-full"
+                        style="font-size: 3.2rem; font-weight: 800; color: #a78bfa; margin-top: 0.2rem; line-height: 1;">
+                        -</div>
+                </div>
+
+                <div>
+                    <div
+                        style="font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;">
+                        Partial Listen</div>
+                    <div id="stat-partial"
+                        style="font-size: 3.2rem; font-weight: 800; color: #fbbf24; margin-top: 0.2rem; line-height: 1;">
+                        -</div>
+                </div>
+
+                <div>
+                    <div
+                        style="font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;">
+                        Avg Listen %</div>
+                    <div
+                        style="font-size: 3.2rem; font-weight: 800; color: #38bdf8; margin-top: 0.2rem; line-height: 1; display: flex; align-items: baseline;">
+                        <span id="stat-percent">-</span><span
+                            style="font-size: 1.4rem; color: #64748b; margin-left: 2px;">%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+                <h3
+                    style="color: #cbd5e1; font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem;">
+                    Active Villages</h3>
+                <div id="stat-villages" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <span style="color:#64748b; font-style:italic;">Loading distribution...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Card: Add Farmer (Registration Only) - Spans Full Width -->
         <div class="glass-card"
             style="grid-column: 1 / -1; border-color: rgba(244, 114, 182, 0.4); box-shadow: 0 10px 30px -10px rgba(244, 114, 182, 0.2);">
             <div class="header">
                 <h1
                     style="background: linear-gradient(to right, #f472b6, #fb7185); -webkit-background-clip: text; background-clip: text;">
-                    Demo Mode Call</h1>
-                <p>Instantly test the AI Voice Call without saving to the database.</p>
+                    Add/Register Farmer</h1>
+                <p>Register a farmer into the database for future daily advisory calls.</p>
             </div>
 
             <form id="demo-form"
@@ -398,7 +503,7 @@
         <div class="glass-card">
             <div class="header">
                 <h1>Farmcall Connect</h1>
-                <p>Register & trigger a single voice advisory.</p>
+                <p>Register.</p>
             </div>
 
             <form id="onboard-form" style="display:flex; flex-direction:column; height: 100%;">
@@ -454,7 +559,7 @@
 
                 <button type="submit" id="submit-btn" class="btn-submit">
                     <div id="loader-1" class="loader"></div>
-                    <span id="btn-text-1">Register & Call Farmer</span>
+                    <span id="btn-text-1">Register Farmer</span>
                 </button>
             </form>
             <div id="status-1" class="status-message"></div>
@@ -568,9 +673,9 @@
             );
         });
 
-        // 1. Single Farmer
+        // 1. Single Farmer Registration
         document.getElementById('onboard-form').addEventListener('submit', (e) => {
-            handleFormSubmit(e, '/api/register-and-call', 'POST',
+            handleFormSubmit(e, '/api/register', 'POST',
                 'submit-btn', 'loader-1', 'btn-text-1', 'status-1',
                 () => ({
                     name: document.getElementById('name').value,
@@ -582,7 +687,7 @@
                     language: document.getElementById('language').value,
                     crop: document.getElementById('crop').value
                 }),
-                'Connecting...', 'Register & Call Farmer'
+                'Registering...', 'Register Farmer'
             );
         });
 
@@ -605,6 +710,66 @@
                 'Executing Pipeline...', 'Run Daily Alerts'
             );
         });
+        // 4. Live Analytics Polling
+        async function fetchStats() {
+            try {
+                const filter = document.getElementById('stats-filter').value;
+                const res = await fetch(`/api/stats?filter_type=${filter}`);
+                if (!res.ok) return;
+                const data = await res.json();
+
+                document.getElementById('stat-calls').innerText = data.total_calls;
+                document.getElementById('stat-answered').innerText = data.answered_calls;
+                document.getElementById('stat-unanswered').innerText = data.unanswered_calls;
+                document.getElementById('stat-full').innerText = data.calls_full_listen;
+                document.getElementById('stat-partial').innerText = data.calls_partial_listen;
+                document.getElementById('stat-percent').innerText = data.avg_listen_percent;
+
+                const vContainer = document.getElementById('stat-villages');
+                vContainer.innerHTML = '';
+                if (data.village_distribution.length === 0) {
+                    vContainer.innerHTML = '<span style="color:#475569; font-style:italic; font-size:0.9rem;">No calls placed yet.</span>';
+                } else {
+                    data.village_distribution.forEach(v => {
+                        vContainer.innerHTML += `<span style="background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 0.4rem 1rem; border-radius: 30px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px;">${v.name} &nbsp;<span style="color:#e2e8f0; font-weight:800;">${v.count}</span></span>`;
+                    });
+                }
+            } catch (e) {
+                console.error("Stats Error:", e);
+            }
+        }
+
+        async function clearAnalytics() {
+            const adminPassword = prompt("Enter FarmCall Admin Password to wipe all analytics:");
+            if (!adminPassword) return;
+
+            if (!confirm("Are you absolutely sure? This will delete the entire call history graph.")) return;
+
+            try {
+                const authHeader = 'Basic ' + btoa(`admin:${adminPassword}`);
+                const response = await fetch('/api/admin/clear_analytics', {
+                    method: 'DELETE',
+                    headers: { 'Authorization': authHeader }
+                });
+
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        alert("Invalid password.");
+                    } else {
+                        alert(`HTTP error! status: ${response.status}`);
+                    }
+                    return;
+                }
+                
+                alert("Analytics history wiped successfully.");
+                fetchStats();
+            } catch (err) {
+                alert("Failed to clear analytics: " + err.message);
+            }
+        }
+
+        // Initial Fetch
+        fetchStats();
     </script>
 </body>
 

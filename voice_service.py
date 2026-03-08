@@ -20,6 +20,26 @@ voice_map = {
 # Languages where Murf doesn't have a voice — fallback to English voice
 FALLBACK_VOICE = "en-IN-isha"
 
+def get_mp3_duration_from_url(url):
+    try:
+        from mutagen.mp3 import MP3
+        import io
+        response = requests.get(url, timeout=10)
+        audio = MP3(io.BytesIO(response.content))
+        return float(audio.info.length)
+    except Exception as e:
+        print(f"Failed to fetch duration from URL: {e}")
+        return 0.0
+
+def get_mp3_duration_from_file(filepath):
+    try:
+        from mutagen.mp3 import MP3
+        audio = MP3(filepath)
+        return float(audio.info.length)
+    except Exception as e:
+        print(f"Failed to fetch duration from file: {e}")
+        return 0.0
+
 def generate_voice_file(text, language="English"):
 
     voice_id = voice_map.get(language, FALLBACK_VOICE)
@@ -57,7 +77,8 @@ def generate_voice_file(text, language="English"):
             
         print(f"Generated Murf URL: {audio_url}")
         # Instead of downloading through Ngrok, return the high-speed AWS CDN link directly to Twilio!
-        return audio_url
+        duration = get_mp3_duration_from_url(audio_url)
+        return audio_url, duration
 
     except Exception as e:
         print(f"Murf API request failed: {e}")
@@ -91,5 +112,6 @@ def _fallback_gtts(text, language="English"):
     tts = gTTS(text=text, lang=lang_code)
     tts.save(filepath)
 
-    return filename
+    duration = get_mp3_duration_from_file(filepath)
+    return filename, duration
 
