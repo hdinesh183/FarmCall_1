@@ -45,6 +45,7 @@ def make_twilio_call(phone_number, audio_url, language="English"):
         to=phone_number,
         from_=TWILIO_PHONE_NUMBER,
         status_callback=f"{NGROK_URL}/api/twilio/webhook",
+        status_callback_method='POST',
         status_callback_event=['completed', 'no-answer', 'busy', 'failed']
     )
 
