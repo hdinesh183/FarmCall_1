@@ -211,15 +211,18 @@ def wipe_database(username: str = Depends(admin_auth)):
 async def twilio_webhook(
     CallSid: str = Form(...),
     CallStatus: str = Form(...),
-    CallDuration: str = Form(None)
+    CallDuration: str = Form(None),
+    DialCallDuration: str = Form(None)
 ):
     db = SessionLocal()
     try:
         call_record = db.query(AdvisoryCall).filter(AdvisoryCall.twilio_sid == CallSid).first()
         if call_record:
             call_record.call_status = CallStatus
-            if CallDuration:
-                call_record.call_duration = int(CallDuration)
+            
+            actual_duration = DialCallDuration or CallDuration
+            if actual_duration:
+                call_record.call_duration = int(actual_duration)
             db.commit()
         return {"status": "success"}
     except Exception as e:
@@ -749,7 +752,7 @@ def demo_call(req: RegisterCallRequest, background_tasks: BackgroundTasks):
 
         # Stateless tracking: NO database entries
         advisory_text = generate_ai_advisory(req.village_name, weather_input, language=req.language)
-        audio_file = generate_voice_file(advisory_text, language=req.language)
+        audio_file, duration = generate_voice_file(advisory_text, language=req.language)
         
         if audio_file.startswith("http"):
             audio_url = audio_file
