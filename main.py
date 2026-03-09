@@ -410,16 +410,7 @@ async def cleanup_audio_files(delay_seconds: int = 300):
                 except Exception as e:
                     print(f"Failed to delete {filename}: {e}")
 
-    try:
-        db = SessionLocal()
-        db.query(AdvisoryCall).delete()
-        db.query(Advisory).delete()
-        db.query(WeatherData).delete()
-        db.commit()
-        db.close()
-        print("Auto-deleted temporal database records (weather_data, advisories, advisory_calls).")
-    except Exception as e:
-        print(f"Failed to delete temporal database records: {e}")
+
 
 @app.get("/run-daily-alerts")
 def run_alerts(background_tasks: BackgroundTasks):
