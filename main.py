@@ -17,7 +17,7 @@ from config import NGROK_URL
 from models import Village, Farmer, Advisory, WeatherData, AdvisoryCall
 from database import SessionLocal, engine, Base
 from sqlalchemy import text, func
-from fastapi import FastAPI, BackgroundTasks, HTTPException, Form
+from fastapi import FastAPI, BackgroundTasks, HTTPException, Form, Request
 import os
 import asyncio
 from datetime import date, timedelta
@@ -207,22 +207,28 @@ def wipe_database(username: str = Depends(admin_auth)):
 
 # --- ANALYTICS & TELEMETRY ---
 
-@app.post("/api/twilio/webhook")
-async def twilio_webhook(
-    CallSid: str = Form(...),
-    CallStatus: str = Form(...),
-    CallDuration: str = Form(None),
-    DialCallDuration: str = Form(None)
-):
+@app.api_route("/api/twilio/webhook", methods=["GET", "POST"])
+async def twilio_webhook(request: Request):
     db = SessionLocal()
     try:
+        # Check Form Data (POST) first, then fallback to Query Params (GET)
+        form_data = await request.form()
+        query_params = request.query_params
+        
+        CallSid = form_data.get("CallSid") or query_params.get("CallSid")
+        CallStatus = form_data.get("CallStatus") or query_params.get("CallStatus")
+        CallDuration = form_data.get("CallDuration") or query_params.get("CallDuration")
+        DialCallDuration = form_data.get("DialCallDuration") or query_params.get("DialCallDuration")
+        
+        if not CallSid or not CallStatus:
+            return {"status": "error", "message": "Missing essential parameters"}
         call_record = db.query(AdvisoryCall).filter(AdvisoryCall.twilio_sid == CallSid).first()
         if call_record:
             call_record.call_status = CallStatus
             
             actual_duration = DialCallDuration or CallDuration
             if actual_duration:
-                call_record.call_duration = int(actual_duration)
+                call_record.call_duration = int(float(actual_duration))
             db.commit()
         return {"status": "success"}
     except Exception as e:

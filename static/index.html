@@ -340,7 +340,8 @@
                     Live Pulse
                 </h2>
                 <div style="display: flex; gap: 1rem; align-items: center;">
-                    <select id="stats-filter" onchange="fetchStats()" style="background: rgba(0,0,0,0.3); color: #cbd5e1; border: 1px solid var(--glass-border); border-radius: 8px; padding: 0.4rem 0.8rem; font-family: inherit; font-size: 0.85rem; outline: none; cursor: pointer;">
+                    <select id="stats-filter" onchange="fetchStats()"
+                        style="background: rgba(0,0,0,0.3); color: #cbd5e1; border: 1px solid var(--glass-border); border-radius: 8px; padding: 0.4rem 0.8rem; font-family: inherit; font-size: 0.85rem; outline: none; cursor: pointer;">
                         <option value="daily">Daily Pulse</option>
                         <option value="lifetime">Lifetime Analytics</option>
                     </select>
@@ -432,8 +433,9 @@
             <div class="header">
                 <h1
                     style="background: linear-gradient(to right, #f472b6, #fb7185); -webkit-background-clip: text; background-clip: text;">
-                    Add/Register Farmer</h1>
-                <p>Register a farmer into the database for future daily advisory calls.</p>
+                    FarmCall Demo</h1>
+                <p>Try the FarmCall AI Voice Call for free without registering.
+                </p>
             </div>
 
             <form id="demo-form"
@@ -760,7 +762,7 @@
                     }
                     return;
                 }
-                
+
                 alert("Analytics history wiped successfully.");
                 fetchStats();
             } catch (err) {
