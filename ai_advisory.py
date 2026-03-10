@@ -147,13 +147,13 @@ def generate_ai_advisory(village_name: str, weather_input: dict, language: str =
     base_text = response.text.strip()
     
     gather_map = {
-        "English": "Press 1 to listen to this message again.",
-        "Hindi": "इस संदेश को फिर से सुनने के लिए 1 दबाएं।",
-        "Tamil": "இந்த செய்தியை மீண்டும் கேட்க 1-ஐ அழுத்தவும்.",
-        "Telugu": "ఈ సందేశాన్ని మళ్ళీ వినడానికి 1 నొక్కండి.",
-        "Bengali": "এই বার্তাটি আবার শুনতে ১ টিপুন।",
-        "Kannada": "ಈ ಸಂದೇಶವನ್ನು ಮತ್ತೆ ಕೇಳಲು 1 ಅನ್ನು ಒತ್ತಿರಿ.",
-        "Malayalam": "ഈ സന്ദേശം വീണ്ടും കേൾക്കാൻ 1 അമർത്തുക."
+        "English": "Press one to listen to this message again.",
+        "Hindi": "इस संदेश को फिर से सुनने के लिए एक दबाएं।",
+        "Tamil": "இந்த செய்தியை மீண்டும் கேட்க ஒன்றை அழுத்தவும்.",
+        "Telugu": "ఈ సందేశాన్ని మళ్ళీ వినడానికి ఒకటి నొక్కండి.",
+        "Bengali": "এই বার্তাটি আবার শুনতে এক টিপুন।",
+        "Kannada": "ಈ ಸಂದೇಶವನ್ನು ಮತ್ತೆ ಕೇಳಲು ಒಂದು ಒತ್ತಿರಿ.",
+        "Malayalam": "ഈ സന്ദേശം വീണ്ടും കേൾക്കാൻ ഒന്ന് അമർത്തുക."
     }
     
     gather_text = gather_map.get(language, gather_map["English"])

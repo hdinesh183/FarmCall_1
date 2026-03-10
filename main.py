@@ -249,16 +249,16 @@ async def twilio_repeat(
     from config import NGROK_URL
 
     lang_map = {
-        "English": "en-IN",
-        "Hindi": "hi-IN",
-        "Tamil": "ta-IN",
-        "Telugu": "te-IN",
-        "Bengali": "bn-IN",
-        "Kannada": "kn-IN",
-        "Malayalam": "ml-IN"
+        "English": ("en-IN", "Goodbye."),
+        "Hindi": ("hi-IN", "धन्यवाद।"),
+        "Tamil": ("ta-IN", "நன்றி."),
+        "Telugu": ("te-IN", "ధన్యవాదాలు."),
+        "Bengali": ("bn-IN", "ধন্যবাদ।"),
+        "Kannada": ("kn-IN", "ಧನ್ಯವಾದಗಳು."),
+        "Malayalam": ("ml-IN", "നന്ദി.")
     }
 
-    tw_lang = lang_map.get(language, "en-IN")
+    tw_lang, tw_goodbye = lang_map.get(language, ("en-IN", "Goodbye."))
     
     if Digits == '1':
         safe_audio_url = html.escape(audio_url)
@@ -273,12 +273,12 @@ async def twilio_repeat(
             <Gather numDigits="1" action="{safe_action_url}" method="POST" timeout="5">
                 <Play>{safe_audio_url}</Play>
             </Gather>
-            <Say language="{tw_lang}">Goodbye.</Say>
+            <Say language="{tw_lang}">{tw_goodbye}</Say>
         </Response>
         """
         return Response(content=twiml, media_type="application/xml")
     
-    farewell = f"""<Response><Say language="{tw_lang}">Goodbye.</Say></Response>"""
+    farewell = f"""<Response><Say language="{tw_lang}">{tw_goodbye}</Say></Response>"""
     return Response(content=farewell, media_type="application/xml")
 
 @app.get("/api/stats")
