@@ -32,11 +32,11 @@ def make_twilio_call(phone_number, audio_url, language="English"):
 
     twiml = f"""
     <Response>
-        <Say language="{tw_lang}">{tw_text}</Say>
+        <Say>{tw_text}</Say>
         <Gather numDigits="1" action="{safe_action_url}" method="POST" timeout="5">
             <Play>{safe_audio_url}</Play>
         </Gather>
-        <Say language="{tw_lang}">{tw_goodbye}</Say>
+        <Say>{tw_goodbye}</Say>
     </Response>
     """
     
@@ -45,8 +45,7 @@ def make_twilio_call(phone_number, audio_url, language="English"):
         to=phone_number,
         from_=TWILIO_PHONE_NUMBER,
         status_callback=f"{NGROK_URL}/api/twilio/webhook",
-        status_callback_method='POST',
-        status_callback_event=['completed', 'no-answer', 'busy', 'failed']
+        status_callback_method='POST'
     )
 
     return call.sid

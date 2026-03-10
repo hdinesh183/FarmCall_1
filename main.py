@@ -273,12 +273,12 @@ async def twilio_repeat(
             <Gather numDigits="1" action="{safe_action_url}" method="POST" timeout="5">
                 <Play>{safe_audio_url}</Play>
             </Gather>
-            <Say language="{tw_lang}">{tw_goodbye}</Say>
+            <Say>{tw_goodbye}</Say>
         </Response>
         """
         return Response(content=twiml, media_type="application/xml")
     
-    farewell = f"""<Response><Say language="{tw_lang}">{tw_goodbye}</Say></Response>"""
+    farewell = f"""<Response><Say>{tw_goodbye}</Say></Response>"""
     return Response(content=farewell, media_type="application/xml")
 
 @app.get("/api/stats")
