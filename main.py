@@ -466,29 +466,26 @@ def add_farmer(farmer: FarmerCreate):
 class VillageCallRequest(BaseModel):
     village_name: str
 
-@app.post("/api/call-village")
-def call_village_endpoint(req: VillageCallRequest, background_tasks: BackgroundTasks):
-    req.village_name = req.village_name.strip().lower()
+def trigger_village_pipeline(village_id: int):
+    """Heavy-duty logic moved to background to prevent Gunicorn timeout."""
     db = SessionLocal()
-    village = db.query(Village).filter(Village.village_name.ilike(req.village_name)).first()
-    if not village:
-        db.close()
-        raise HTTPException(status_code=404, detail="Village not found")
-        
-    farmers = db.query(Farmer).filter(Farmer.village_id == village.id).all()
-    if not farmers:
-        db.close()
-        raise HTTPException(status_code=404, detail="No farmers connected to this village")
-
-    lang_groups = {}
-    for f in farmers:
-        lang = f.language or "English"
-        if lang not in lang_groups:
-            lang_groups[lang] = []
-        lang_groups[lang].append(f)
-
-    # 2. Trigger the call for this village
     try:
+        village = db.query(Village).filter(Village.id == village_id).first()
+        if not village:
+            return
+
+        farmers = db.query(Farmer).filter(Farmer.village_id == village.id).all()
+        if not farmers:
+            return
+
+        lang_groups = {}
+        for f in farmers:
+            lang = f.language or "English"
+            if lang not in lang_groups:
+                lang_groups[lang] = []
+            lang_groups[lang].append(f)
+
+        # 1. Fetch and Process Weather
         raw = fetch_weekly_forecast(village.latitude, village.longitude)
         processed = process_weekly_data(raw)
         store_weekly_forecast(village.id, processed)
@@ -525,13 +522,17 @@ def call_village_endpoint(req: VillageCallRequest, background_tasks: BackgroundT
             "sun_condition": sun_condition
         }
 
-        # Concurrently call all farmers
+        # 2. Concurrently call all farmers
         from concurrent.futures import ThreadPoolExecutor
 
-        def fire_call(f, audio_url, lang, advisory_id):
+        def fire_call(f_id, audio_url, lang, advisory_id):
             try:
-                sid = make_twilio_call(f.phone, audio_url, language=lang)
                 t_db = SessionLocal()
+                f = t_db.query(Farmer).filter(Farmer.id == f_id).first()
+                if not f:
+                    t_db.close()
+                    return
+                sid = make_twilio_call(f.phone, audio_url, language=lang)
                 call_record = AdvisoryCall(
                     advisory_id=advisory_id,
                     farmer_id=f.id,
@@ -542,7 +543,7 @@ def call_village_endpoint(req: VillageCallRequest, background_tasks: BackgroundT
                 t_db.commit()
                 t_db.close()
             except Exception as e:
-                print(f"Failed to call {f.phone}: {e}")
+                print(f"Failed to call in background: {e}")
 
         with ThreadPoolExecutor(max_workers=10) as executor:
             for lang, f_list in lang_groups.items():
@@ -553,13 +554,13 @@ def call_village_endpoint(req: VillageCallRequest, background_tasks: BackgroundT
                     village_id=village.id,
                     forecast_start_date=date.today(),
                     forecast_end_date=date.today() + timedelta(days=7),
-                    risk_level="MANUAL_VILLAGE", # This was not part of the instruction, but was in the provided diff. Keeping it as is.
-                    risk_type="Village_Trigger", # This was not part of the instruction, but was in the provided diff. Keeping it as is.
+                    risk_level="MANUAL_VILLAGE",
+                    risk_type="Village_Trigger",
                     advisory_text=advisory_text,
                     audio_filename=audio_file,
                     audio_duration=duration,
                     language=lang,
-                    trigger_type="manual" # This was not part of the instruction, but was in the provided diff. Keeping it as is.
+                    trigger_type="manual"
                 )
                 db.add(advisory)
                 db.commit()
@@ -570,17 +571,39 @@ def call_village_endpoint(req: VillageCallRequest, background_tasks: BackgroundT
                     audio_url = f"{NGROK_URL}/audio_files/{audio_file}"
                 
                 for f in f_list:
-                    executor.submit(fire_call, f, audio_url, lang, advisory.id)
+                    executor.submit(fire_call, f.id, audio_url, lang, advisory.id)
 
-        background_tasks.add_task(cleanup_audio_files, 300)
-
-        v_name = village.village_name
-        db.close()
-        return {"status": "success", "message": f"Successfully advised and called {len(farmers)} farmer(s) in {v_name}."}
+        # 3. Cleanup after a delay
+        import time
+        time.sleep(300)
+        cleanup_audio_files(300)
 
     except Exception as e:
+        print(f"Pipeline Error: {e}")
+    finally:
         db.close()
-        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/call-village")
+def call_village_endpoint(req: VillageCallRequest, background_tasks: BackgroundTasks):
+    req.village_name = req.village_name.strip().lower()
+    db = SessionLocal()
+    village = db.query(Village).filter(Village.village_name.ilike(req.village_name)).first()
+    if not village:
+        db.close()
+        raise HTTPException(status_code=404, detail="Village not found")
+        
+    farmers_count = db.query(Farmer).filter(Farmer.village_id == village.id).count()
+    if farmers_count == 0:
+        db.close()
+        raise HTTPException(status_code=404, detail="No farmers connected to this village")
+
+    # Trigger the call for this village in background
+    background_tasks.add_task(trigger_village_pipeline, village.id)
+    
+    v_name = village.village_name
+    db.close()
+    return {"status": "success", "message": f"Processing calls for {farmers_count} farmer(s) in {v_name} in the background."}
+
 
 class RegisterCallRequest(BaseModel):
     name: str
